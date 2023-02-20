@@ -18,9 +18,7 @@ let list = [];
 
 list = JSON.parse(window.localStorage.getItem(LS) ?? "[]");
 
-list.forEach(m => {
-    renderMessage(m);
-});
+list.forEach(m => renderMessage(m));
 
 function sendMessage(event) {
     const message = { message: event.target.value, date: new Date() };
