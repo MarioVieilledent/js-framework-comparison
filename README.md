@@ -4,7 +4,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/MarioVieilledent/js-framework-comparison)
 
 Comparison of size of
-1. Builded apps and minified JS
+1. Built apps and minified JS
 2. Size of development folders
 
 For some of the most used Javascript Framework.
