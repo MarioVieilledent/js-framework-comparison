@@ -19,11 +19,17 @@ For each framework is developped a small application that handles a counter and 
 | Size of dev folder | -     | 481411  | 103418 | 107088 | 96100  | 3.50       |
 | Version            | -     | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | -          |
 
-### Size of built framework
+## Size of built framework in KB
 
 Lower is better.
 
-![Comparison Chart](/chart.jpg)
+![Comparison Chart](/chartBuilt.jpg)
+
+## Size of dev folder in MB
+
+Lower is better.
+
+![Comparison Chart](/chartDev.jpg)
 
 ## Details on each framework
 
