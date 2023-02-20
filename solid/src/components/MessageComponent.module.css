@@ -1,0 +1,14 @@
+.elem {
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  font-weight: 400;
+  margin-right: 12px;
+}
+
+.date {
+  color: #999;
+  font-size: 14px;
+}

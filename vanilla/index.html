@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="App">
+        <header class="header">
+          <h1 id="title"></h1>
+          <img src="./assets/icon.svg" class="logo" alt="logo" />
+          <span id="count"></span>
+        </header>
+        <div class="content">
+          <input type="text" onchange="sendMessage(event)" />
+          <div id="MessageComponent"></div>
+          <button onclick="emptyList()">Empty</button>
+        </div>
+      </div>
+      
+    <script src="script.js"></script>
+</body>
+
+</html>

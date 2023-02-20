@@ -1,0 +1,12 @@
+<div class="App">
+  <header class="header">
+    <h1>{{title}}</h1>
+    <img src="./assets/icon.svg" class="logo" alt="logo" />
+    <span>{{count}}</span>
+  </header>
+  <div class="content">
+    <input type="text" (change)="sendMessage($event)" />
+    <app-message *ngFor="let elem of list" [message]="elem"></app-message>
+    <button (click)="emptyList()">Empty</button>
+  </div>
+</div>
