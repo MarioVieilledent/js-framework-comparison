@@ -108,9 +108,33 @@ Less is better.
 
 Here I put side to side all code to manage the list (creation, push, empty)
 
-## Angular
+### Angular
 
+```html
+<input type="text" (change)="sendMessage($event)" />
+<app-message *ngFor="let elem of list" [message]="elem"></app-message>
+<button (click)="emptyList()">Empty</button>
+```
 
+```ts
+LS: string = "jsFrameworkComparison-angular-messages";
+
+list: Message[] = [];
+
+ngOnInit() {
+  this.list = JSON.parse(window.localStorage.getItem(this.LS) ?? "[]") as Message[];
+}
+
+sendMessage(event: any) {
+  this.list.push({ message: event.target.value, date: new Date() });
+  window.localStorage.setItem(this.LS, JSON.stringify(this.list));
+}
+
+emptyList() {
+  this.list = [];
+  window.localStorage.setItem(this.LS, "[]");
+}
+```
 
 ### Svelte
 
