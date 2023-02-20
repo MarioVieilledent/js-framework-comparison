@@ -23,12 +23,12 @@ For each framework is developped a small application that handles a counter and 
 
 Less is better.
 
-<div style="display: flex;">
+<!-- <div style="display: flex;">
 <div style="width: 84px; height: 11.1px; background-color: #A89610; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Vanilla<br>1.1 KB</div>
 <div style="width: 84px; height: 67.3px; background-color: #F23900; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Svelte<br>6.7 KB</div>
 <div style="width: 84px; height: 99.6px; background-color: #5389C7; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Solid<br>10 KB</div>
 <div style="width: 84px; height: 1380px; background-color: #C3012E; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Angular<br>138 KB</div>
-</div>
+</div> -->
 
 ## Details on each framework
 
