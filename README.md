@@ -1,4 +1,4 @@
-# JS Framework Comparison of size of builded apps
+# JS Framework Comparison of size of built apps
 
 ![GitHub language count](https://img.shields.io/github/languages/count/MarioVieilledent/js-framework-comparison)
 ![GitHub top language](https://img.shields.io/github/languages/top/MarioVieilledent/js-framework-comparison)
@@ -15,11 +15,11 @@ For each framework is developped a small application that handles a counter and 
 
 |                    | React | Angular | Vue | Svelte | Solid  | Vanilla JS |
 | ------------------ | ----- | ------- | --- | ------ | ------ | ---------- |
-| Size of builded JS | -     | 138     | -   | 6.73   | 9.96   | 1.11       |
+| Size of built JS | -     | 138     | -   | 6.73   | 9.96   | 1.11       |
 | Size of dev folder | -     | 481411  | -   | 103418 | 96100  | 3.50       |
 | Version            | -     | 14.2.3  | -   | 3.55.1 | 1.6.10 | -          |
 
-### Size of builded framework
+### Size of built framework
 
 Less is better.
 
@@ -40,7 +40,7 @@ Less is better.
 - Contains:
   - Files: 2307
   - Folders: 361
-- Size of builded app: 27.7 KB
+- Size of built app: 27.7 KB
 - Size of minified JS files: 9.96 KB
 
 - Components: functions that returns JSX or TSX
@@ -59,7 +59,7 @@ Less is better.
 - Contains:
   - Files: 1535
   - Folders: 341
-- Size of builded app: 9.78 KB
+- Size of built app: 9.78 KB
 - Size of minified JS files: 6.73 KB
 
 - Components: `.svelte` file containing script, template and style parts (separated)
@@ -78,7 +78,7 @@ Less is better.
 - Contains:
   - Files: 40942
   - Folders: 3676
-- Size of builded app: 153 KB
+- Size of built app: 153 KB
 - Size of minified JS files: 138 KB
 
 - Components: generated folder containing 4 files, model and controler is a TypeScript class
@@ -97,7 +97,7 @@ Less is better.
 - Contains:
   - Files: 4
   - Folders: 1
-- Size of builded app: 3.50 KB
+- Size of built app: 3.50 KB
 - Size of JS: 1.11 KB
 
 - Components: import js files
