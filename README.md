@@ -30,6 +30,8 @@ Less is better.
 <div style="width: 84px; height: 1380px; background-color: #C3012E; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Angular<br>138 KB</div>
 </div> -->
 
+![Comparison Chart](/chart.png)
+
 ## Details on each framework
 
 ### Solid
