@@ -13,24 +13,17 @@ For each framework is developped a small application that handles a counter and 
 
 ## Results
 
-|                    | React | Angular | Vue | Svelte | Solid  | Vanilla JS |
-| ------------------ | ----- | ------- | --- | ------ | ------ | ---------- |
-| Size of built JS | -     | 138     | -   | 6.73   | 9.96   | 1.11       |
-| Size of dev folder | -     | 481411  | -   | 103418 | 96100  | 3.50       |
-| Version            | -     | 14.2.3  | -   | 3.55.1 | 1.6.10 | -          |
+|                    | React | Angular | Svelte | Vue    | Solid  | Vanilla JS |
+| ------------------ | ----- | ------- | ------ | ------ | ------ | ---------- |
+| Size of built JS   | -     | 138     | 6.73   | 53.6   | 9.96   | 1.11       |
+| Size of dev folder | -     | 481411  | 103418 | 107088 | 96100  | 3.50       |
+| Version            | -     | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | -          |
 
 ### Size of built framework
 
-Less is better.
+Lower is better.
 
-<!-- <div style="display: flex;">
-<div style="width: 84px; height: 11.1px; background-color: #A89610; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Vanilla<br>1.1 KB</div>
-<div style="width: 84px; height: 67.3px; background-color: #F23900; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Svelte<br>6.7 KB</div>
-<div style="width: 84px; height: 99.6px; background-color: #5389C7; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Solid<br>10 KB</div>
-<div style="width: 84px; height: 1380px; background-color: #C3012E; padding: 6px 12px; box-sizing: border-box; border-radius: 6px; margin-right: 6px; font-weight: 500;">Angular<br>138 KB</div>
-</div> -->
-
-![Comparison Chart](/chart.png)
+![Comparison Chart](/chart.jpg)
 
 ## Details on each framework
 
@@ -62,9 +55,27 @@ Less is better.
 - Size of built app: 9.78 KB
 - Size of minified JS files: 6.73 KB
 
-- Components: `.svelte` file containing script, template and style parts (separated)
+- Components: `.svelte` file separating script, template and style
 - State: `let a: Type = 'val';`
 - Primitives: `$: console.log(a + ' updated'));` Simplest and cleanest syntax so far
+
+> `npm i`
+
+> `npm run dev`
+
+> `npm run build`
+
+### Vue
+
+- Size of development folder: 102 MB
+- Contains:
+  - Files: 3267
+  - Folders: 499
+- Size of built app: 59,2 KB
+- Size of minified JS files: 53,6 KB
+
+- Components: `.vue` file separating script, template and style. I used components API
+- State: `let a: Type = 'val';`
 
 > `npm i`
 
@@ -117,28 +128,38 @@ Here I put side to side all code to manage the list (creation, push, empty)
 ```
 
 ```ts
-LS: string = "jsFrameworkComparison-angular-messages";
+import { Component } from '@angular/core';
+import { OnChange } from 'property-watch-decorator';
 
-list: Message[] = [];
+export class AppComponent {
+  LS: string = "jsFrameworkComparison-angular-messages";
 
-ngOnInit() {
-  this.list = JSON.parse(window.localStorage.getItem(this.LS) ?? "[]") as Message[];
+  list: Message[] = [];
+
+  ngOnInit() {
+    this.list = JSON.parse(window.localStorage.getItem(this.LS) ?? "[]") as Message[];
+  }
+
+  sendMessage(event: any) {
+    this.list.push({ message: event.target.value, date: new Date() });
+    window.localStorage.setItem(this.LS, JSON.stringify(this.list));
+  }
+
+  emptyList() {
+    this.list = [];
+    window.localStorage.setItem(this.LS, "[]");
+  }
 }
 
-sendMessage(event: any) {
-  this.list.push({ message: event.target.value, date: new Date() });
-  window.localStorage.setItem(this.LS, JSON.stringify(this.list));
-}
-
-emptyList() {
-  this.list = [];
-  window.localStorage.setItem(this.LS, "[]");
-}
+export type Message = {
+  message: string;
+  date: Date;
+};
 ```
 
 ### Svelte
 
-```ts
+```svelte
 <script lang="ts">
   import MessageComponent from "./components/MessageComponent.svelte";
 
@@ -168,6 +189,40 @@ emptyList() {
   <MessageComponent message={elem} />
 {/each}
 <button on:click={() => emptyList()}>Empty</button>
+```
+
+### Vue
+
+```vue
+<script setup lang="ts">
+import { ref, type Ref } from 'vue';
+import MessageComponent from './components/MessageComponent.vue';
+
+const LS: string = "jsFrameworkComparison-vue-messages";
+let list: Ref<Message[]> = ref([]);
+list.value = JSON.parse(window.localStorage.getItem(LS) ?? "[]") as Message[];
+
+function sendMessage(event: any) {
+  list.value.push({ message: event.target.value, date: new Date() });
+  window.localStorage.setItem(LS, JSON.stringify(list.value));
+}
+
+function emptyList() {
+  list.value = [];
+  window.localStorage.setItem(LS, "[]");
+}
+
+type Message = {
+  message: string;
+  date: Date;
+};
+</script>
+
+<template>
+      <input type="text" @change="(event) => sendMessage(event)" />
+      <MessageComponent v-for="elem in list" :message="elem" />
+      <button @click="() => emptyList()">Empty</button>
+</template>
 ```
 
 ### Solid
