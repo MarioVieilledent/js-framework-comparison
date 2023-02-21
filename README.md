@@ -13,23 +13,23 @@ For each framework is developped a small application that handles a counter and 
 
 ## Results
 
-|                    | React | Angular | Svelte | Vue    | Solid  | Vanilla JS |
-| ------------------ | ----- | ------- | ------ | ------ | ------ | ---------- |
-| Size of built JS   | -     | 138     | 6.73   | 53.6   | 9.96   | 1.11       |
-| Size of dev folder | -     | 481411  | 103418 | 107088 | 96100  | 3.50       |
-| Version            | -     | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | -          |
+|                    | React  | Angular | Svelte | Vue    | Solid  | Vanilla JS |
+| ------------------ | ------ | ------- | ------ | ------ | ------ | ---------- |
+| Size of built JS   | 531    | 138     | 6.73   | 53.6   | 9.96   | 1.11       |
+| Size of dev folder | 292511 | 481411  | 103418 | 107088 | 96100  | 3.50       |
+| Version            | 18.2.0 | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | -          |
 
 ## Size of built framework in KB
 
 Lower is better.
 
-![Comparison Chart](/chartBuilt.jpg)
+![Comparison Chart](/chartBuilt.png)
 
-## Size of dev folder in MB
+## Size of development folder in MB
 
 Lower is better.
 
-![Comparison Chart](/chartDev.jpg)
+![Comparison Chart](/chartDev.png)
 
 ## Details on each framework
 
@@ -97,6 +97,25 @@ Lower is better.
   - Folders: 3676
 - Size of built app: 153 KB
 - Size of minified JS files: 138 KB
+
+- Components: generated folder containing 4 files, model and controler is a TypeScript class
+- State: `a: Type = 'val';` as a class attribute (in ts file, need to access them with `this` keyword)
+- Primitives: Not native to Angular, pretty verbose
+
+> `npm i`
+
+> `ng s`
+
+> `ng build --configuration production`
+
+### React
+
+- Size of development folder: 278 MB
+- Contains:
+  - Files: 36800
+  - Folders: 34805
+- Size of built app: 540 KB
+- Size of minified JS files: 531 KB
 
 - Components: generated folder containing 4 files, model and controler is a TypeScript class
 - State: `a: Type = 'val';` as a class attribute (in ts file, need to access them with `this` keyword)
@@ -269,7 +288,49 @@ export type Message = {
 export default App;
 ```
 
-## Vanilla JS
+### React
+
+```tsx
+import { useEffect, useState } from 'react';
+import MessageComponent from './components/MessageComponent';
+
+const LS: string = 'jsFrameworkComparison-react-messages';
+
+function App() {
+  const [list, setList] = useState<Message[]>([]);
+
+  useEffect(() => {
+    setList(JSON.parse(window.localStorage.getItem(LS) ?? '[]') as Message[]);
+  }, []);
+
+  const sendMessage = (event: any) => {
+    setList([...list, { message: event.target.value, date: new Date() }]);
+    window.localStorage.setItem(LS, JSON.stringify(list));
+  }
+
+  const emptyList = () => {
+    setList([]);
+    window.localStorage.setItem(LS, '[]');
+  }
+
+  return (
+    <div className="content">
+      <input type="text" onBlur={(event) => sendMessage(event)} />
+      {list.map((elem, i) => <MessageComponent key={i} message={elem} />)}
+      <button onClick={() => emptyList()}>Empty</button>
+    </div>
+  );
+};
+
+export type Message = {
+  message: string;
+  date: Date;
+}
+
+export default App;
+```
+
+### Vanilla JS
 
 ```html
 <input type="text" onchange="sendMessage(event)" />
