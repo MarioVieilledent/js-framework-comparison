@@ -13,11 +13,11 @@ For each framework is developped a small application that handles a counter and 
 
 ## Results
 
-|                    | React  | Angular | Svelte | Vue    | Solid  | Vanilla JS |
-| ------------------ | ------ | ------- | ------ | ------ | ------ | ---------- |
-| Size of built JS   | 531    | 138     | 6.73   | 53.6   | 9.96   | 1.11       |
-| Size of dev folder | 292511 | 481411  | 103418 | 107088 | 96100  | 3.50       |
-| Version            | 18.2.0 | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | -          |
+|                         | React `create-react-app` | React `vite` | Angular | Svelte | Vue    | Solid  | Vanilla JS |
+| ----------------------- | ------------------------ | ------------ | ------- | ------ | ------ | ------ | ---------- |
+| Size of built JS (KB)   | 531                      | 140          | 138     | 6.73   | 53.6   | 9.96   | 1.11       |
+| Size of dev folder (KB) | 292511                   | 102757       | 481411  | 103418 | 107088 | 96100  | 3.50       |
+| Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | -          |
 
 ## Size of built framework in KB
 
@@ -108,7 +108,7 @@ Lower is better.
 
 > `ng build --configuration production`
 
-### React
+### React (create-react-app)
 
 - Size of development folder: 278 MB
 - Contains:
@@ -117,15 +117,29 @@ Lower is better.
 - Size of built app: 540 KB
 - Size of minified JS files: 531 KB
 
-- Components: generated folder containing 4 files, model and controler is a TypeScript class
-- State: `a: Type = 'val';` as a class attribute (in ts file, need to access them with `this` keyword)
-- Primitives: Not native to Angular, pretty verbose
+- Components: JSX or TSX files, function that returns JSX
+- State: `const [a, setA] = useState<Type>('val');` as a class attribute 
 
 > `npm i`
 
-> `ng s`
+> `npm start`
 
-> `ng build --configuration production`
+> `npm run build`
+
+### React (npm init vite@latest)
+
+- Size of development folder: 97.9 MB
+- Contains:
+  - Files: 2254
+  - Folders: 320
+- Size of built app: 144 KB
+- Size of minified JS files: 140 KB
+
+> `npm i`
+
+> `npm run dev`
+
+> `npm run build`
 
 ### Vanilla JS
 
