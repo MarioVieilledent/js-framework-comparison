@@ -198,7 +198,7 @@ export type Message = {
 
 ### Svelte
 
-```svelte
+```html
 <script lang="ts">
   import MessageComponent from "./components/MessageComponent.svelte";
 
@@ -232,7 +232,7 @@ export type Message = {
 
 ### Vue
 
-```vue
+```html
 <script setup lang="ts">
 import { ref, type Ref } from 'vue';
 import MessageComponent from './components/MessageComponent.vue';
