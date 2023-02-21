@@ -6,10 +6,11 @@
 Comparison of size of
 1. Built apps and minified JS
 2. Size of development folders
+3. Expressiveness and Simplicity of syntax
 
 For some of the most used Javascript Framework.
 
-For each framework is developped a small application that handles a counter and a list that can be dynamically appended and cleared by UI.
+For each framework is developed a small application that handles a counter and a list that can be dynamically appended and cleared by UI.
 
 ## Results
 
@@ -30,6 +31,15 @@ Lower is better.
 Lower is better.
 
 ![Comparison Chart](/chartDev.png)
+
+## Expressiveness and Simplicity of syntax
+
+In my opinion:
+- **Svelte** and **Vue** *(using Components API)* wins the battle, they provides the simplest and most declarative syntax.
+- Angular has also a pretty clean syntax on top of a nice organisation of components. Though, it can result in a lot of src files to handle.
+- **React** and **Solid** components return JSX that contains JavaScript expression, this focus on more and smaller reusable components (especially compared to Angular components), but have the drawback to mix HTML and JS code together, so it can be confusing, and the MVC is hard to achieve.
+
+In any case, vanilla JS is to be avoided for any kind of projects.
 
 ## Details on each framework
 
