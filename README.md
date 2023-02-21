@@ -12,6 +12,8 @@ For some of the most used Javascript Framework.
 
 For each framework is developed a small application that handles a counter and a list that can be dynamically appended and cleared by UI.
 
+> The well-known [js web frameworks benchmark](https://krausest.github.io/js-framework-benchmark/) by **Krausest** focuses on CPU speed execution, Lighthouse mobile simulation, and Memory allocation. Though it is useful to be aware of the performance of the framework we work with or we want to choose, an important aspect is the size of the final built bundle containing minified js code. Nowadays, the majority of devices can easily run complex websites. But a website is meant to be refreshed a lot, sometimes every time the user changes the page. Here comes the question of the size of the web application, the size impacts the speed for loading the page, the speed for interpreting the files, therefore the user experience, and also the traffic on the network. We want to keep the bundle website as small as possible to benefit a low network traffic, and the best user experience possible on loading time. This project analyses the sizes of the built minified js bundle for the same simple web application in some of the most used js frameworks.
+
 ## Results
 
 |                         | React `create-react-app` | React `vite` | Angular | Svelte | Vue    | Solid  | Vanilla JS |
@@ -36,7 +38,7 @@ Lower is better.
 
 In my opinion:
 - **Svelte** and **Vue** *(using Components API)* wins the battle, they provides the simplest and most declarative syntax.
-- Angular has also a pretty clean syntax on top of a nice organisation of components. Though, it can result in a lot of src files to handle.
+- **Angular** has also a pretty clean syntax on top of a nice organisation of components. Though, it can result in a lot of src files to handle.
 - **React** and **Solid** components return JSX that contains JavaScript expression, this focus on more and smaller reusable components (especially compared to Angular components), but have the drawback to mix HTML and JS code together, so it can be confusing, and the MVC is hard to achieve.
 
 In any case, vanilla JS is to be avoided for any kind of projects.
