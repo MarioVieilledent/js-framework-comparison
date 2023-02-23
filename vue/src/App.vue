@@ -5,14 +5,14 @@ import MessageComponent from './components/MessageComponent.vue';
 const title: string = "Vue app";
 const LS: string = "jsFrameworkComparison-vue-messages";
 
-let count: Ref<number> = ref(0);
+const count: Ref<number> = ref(0);
 
 setInterval(() => {
   count.value++;
   console.log('new value for count: ' + count.value);
 }, 1000);
 
-let list: Ref<Message[]> = ref([]);
+const list: Ref<Message[]> = ref([]);
 
 list.value = JSON.parse(window.localStorage.getItem(LS) ?? "[]") as Message[];
 
@@ -40,9 +40,9 @@ type Message = {
       <span>{{ count }}</span>
     </header>
     <div class="content">
-      <input type="text" @change="(event) => sendMessage(event)" />
+      <input type="text" @change="sendMessage" />
       <MessageComponent v-for="elem in list" :message="elem" />
-      <button @click="() => emptyList()">Empty</button>
+      <button @click="emptyList">Empty</button>
     </div>
   </div>
 </template>
