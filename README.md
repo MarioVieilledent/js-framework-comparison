@@ -16,17 +16,19 @@ For each framework is developed a small application that handles a counter and a
 
 ## Results
 
-|                         | React `create-react-app` | React `vite` | Angular | Svelte | Vue    | Solid  | Vanilla JS |
-| ----------------------- | ------------------------ | ------------ | ------- | ------ | ------ | ------ | ---------- |
-| Size of built JS (KB)   | 531                      | 140          | 138     | 6.73   | 53.6   | 9.96   | 1.11       |
-| Size of dev folder (KB) | 292511                   | 102757       | 481411  | 103418 | 107088 | 96100  | 3.50       |
-| Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | -          |
+|                         | React `create-react-app` | React `vite` | Angular | Svelte | Vue    | Solid  | Qwik   | Vanilla JS |
+| ----------------------- | ------------------------ | ------------ | ------- | ------ | ------ | ------ | ------ | ---------- |
+| Size of built JS (KB)   | 531                      | 140          | 138     | 6.73   | 53.6   | 9.96   | 54.0   | 1.11       |
+| Size of dev folder (KB) | 292511                   | 102757       | 481411  | 103418 | 107088 | 96100  | 168932 | 3.50       |
+| Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | 0.20.1 | -          |
 
 ## Size of built framework in KB
 
 Lower is better.
 
 ![Comparison Chart](/chartBuilt.png)
+
+> **Qwik** is a little bit different because all js is not interpreted after the page is rendered, though the minimum bundle size remains large (42.5 KB).
 
 ## Size of development folder in MB
 
@@ -152,6 +154,24 @@ In any case, vanilla JS is to be avoided for any kind of projects.
 > `npm run dev`
 
 > `npm run build`
+
+### Qwik
+
+- Size of development folder: 97.9 MB
+- Contains:
+  - Files: 6187
+  - Folders: 969
+- Size of built app: 75.1 KB
+- Size of minified JS files: 54 KB
+
+> `npm i`
+
+> `npm start`
+
+> `npm run build`
+
+*I used SSG (Static Site Generation) for this Qwik project*
+*`npm run qwik add`*
 
 ### Vanilla JS
 
@@ -354,6 +374,48 @@ export type Message = {
 }
 
 export default App;
+```
+
+### Qwik
+
+```tsx
+import { component$, useSignal, useBrowserVisibleTask$, $, useStore } from '@builder.io/qwik';
+import MessageComponent from './components/MessageComponent';
+
+const title: string = 'Qwik app';
+const LS: string = 'jsFrameworkComparison-qwik-messages';
+
+export default component$(() => {
+  const list = useStore<{ value: Message[] }>({ value: [] });
+
+  const sendMessage = $((event: any) => {
+    list.value = [...list.value, {message: event.target.value, date: new Date()}];
+    window.localStorage.setItem(LS, JSON.stringify(list.value));
+  });
+
+  const emptyList = $(() => {
+    list.value = [];
+    window.localStorage.setItem(LS, '[]');
+  });
+
+  useBrowserVisibleTask$(() => {
+    list.value = JSON.parse(window.localStorage.getItem(LS) ?? '[]') as Message[];
+  });
+
+  return (
+    <div class="content">
+      <input type="text" onChange$={(event) => sendMessage(event)} />
+      <span>{list.value.length}</span>
+      {list.value.map((elem, i) => (<MessageComponent key={i} message={elem} />))}
+      <button onClick$={() => emptyList()}>Empty</button>
+    </div>
+  );
+});
+
+export type Message = {
+  message: string;
+  date: Date;
+}
 ```
 
 ### Vanilla JS

@@ -1,9 +1,10 @@
-import { component$, useSignal, useTask$, $ } from '@builder.io/qwik';
+import { component$, useSignal, useBrowserVisibleTask$, $, useStore } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import './App.css';
 import MessageComponent from './components/MessageComponent';
 
 const title: string = 'Qwik app';
+const LS: string = 'jsFrameworkComparison-qwik-messages';
 
 export type Message = {
   message: string;
@@ -12,22 +13,21 @@ export type Message = {
 
 export default component$(() => {
   const count = useSignal<number>(0);
-  const list = useSignal<Message[]>([]);
+  const list = useStore<{ value: Message[] }>({ value: [] });
 
-  const sendMessage = $((event: any)=>{
-    list.value.push({
-        message: event.target.value,
-        date: new Date()
-    });
+  const sendMessage = $((event: any) => {
+    list.value = [...list.value, {message: event.target.value, date: new Date()}];
+    window.localStorage.setItem(LS, JSON.stringify(list.value));
   });
-    
+
   const emptyList = $(() => {
     list.value = [];
+    window.localStorage.setItem(LS, '[]');
   });
 
-  useTask$(async () => {
-    setInterval(() => { count.value ++; }, 1000);
-    list.value = [];
+  useBrowserVisibleTask$(() => {
+    setInterval(() => { count.value++; }, 1000);
+    list.value = JSON.parse(window.localStorage.getItem(LS) ?? '[]') as Message[];
   });
 
   return (
@@ -38,8 +38,9 @@ export default component$(() => {
         <span>{count.value}</span>
       </header>
       <div class="content">
-        <input type="text" onInput$={(event) => sendMessage(event)} />
-        {list.value.map((elem, i) => <MessageComponent key={i} message={elem} />)}
+        <input type="text" onChange$={(event) => sendMessage(event)} />
+        <span>{list.value.length}</span>
+        {list.value.map((elem, i) => (<MessageComponent key={i} message={elem} />))}
         <button onClick$={() => emptyList()}>Empty</button>
       </div>
     </div>
