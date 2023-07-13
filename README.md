@@ -12,19 +12,19 @@ For some of the most used Javascript Framework.
 
 For each framework is developed a small application that handles a counter and a list that can be dynamically appended and cleared by UI.
 
-> The well-known [js web frameworks benchmark](https://krausest.github.io/js-framework-benchmark/) by **Krausest** focuses on CPU speed execution, Lighthouse mobile simulation, and Memory allocation. Though it is useful to be aware of the performance of the framework we work with or we want to choose, an important aspect is the size of the final built bundle containing minified js code. Nowadays, the majority of devices can easily run complex websites. But a website is meant to be refreshed a lot, sometimes every time the user changes the page. Here comes the question of the size of the web application, the size impacts the speed for loading the page, the speed for interpreting the files, therefore the user experience, and also the traffic on the network. We want to keep the bundle website as small as possible to benefit a low network traffic, and the best user experience possible on loading time. This project analyses the sizes of the built minified js bundle for the same simple web application in some of the most used js frameworks.
+> The well-known [JS web frameworks benchmark](https://krausest.github.io/js-framework-benchmark/) conducted by **Krausest** focuses on CPU speed execution, Lighthouse mobile simulation, and memory allocation. While it is valuable to understand the performance of the framework we are working with or considering, an important factor to consider is the size of the final built bundle that contains minified JS code. Nowadays, most devices can easily handle complex websites. However, websites are often refreshed frequently, sometimes with every page change by the user. This raises the issue of the web application's size, as it affects page loading speed, file interpretation speed, user experience, and network traffic. It is desirable to keep the bundled website as small as possible to minimize network traffic and ensure the best possible user experience in terms of loading time. This project analyzes the sizes of the minified JS bundles for the same simple web application in some of the most commonly used JS frameworks.
 
 ## Results
 
-|                         | React `create-react-app` | React `vite` | Angular | Svelte | Vue    | Solid  | Qwik   | Vanilla JS |
-| ----------------------- | ------------------------ | ------------ | ------- | ------ | ------ | ------ | ------ | ---------- |
-| Size of built JS (KB)   | 531                      | 140          | 138     | 6.73   | 53.6   | 9.96   | 54.0   | 1.11       |
-| Size of dev folder (KB) | 292511                   | 102757       | 481411  | 103418 | 107088 | 96100  | 168932 | 3.50       |
-| Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 3.55.1 | 3.2.45 | 1.6.10 | 0.20.1 | -          |
+|                         | React `create-react-app` | React `vite` | Angular | Preact `Vite` | Svelte  | Vue     | Solid  | Qwik    | Vanilla JS |
+| ----------------------- | ------------------------ | ------------ | ------- | ------------- | ------- | ------- | ------ | ------- | ---------- |
+| Size of built JS (KB)   | 531                      | 140          | 138     | 13.7          | 6.73    | 53.6    | 9.96   | 54.0    | 1.11       |
+| Size of dev folder (KB) | 292 511                  | 102 757      | 481 411 | 70 761        | 103 418 | 107 088 | 96 100 | 168 932 | 3.6        |
+| Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 10.13.1       | 3.55.1  | 3.2.45  | 1.6.10 | 0.20.1  | -          |
 
 ## Size of built framework in KB
 
-Lower is better.
+**Lower is better**
 
 ![Comparison Chart](/chartBuilt.png)
 
@@ -32,7 +32,7 @@ Lower is better.
 
 ## Size of development folder in MB
 
-Lower is better.
+**Lower is better**
 
 ![Comparison Chart](/chartDev.png)
 
@@ -148,6 +148,21 @@ In any case, vanilla JS is to be avoided for any kind of projects.
   - Folders: 320
 - Size of built app: 144 KB
 - Size of minified JS files: 140 KB
+
+> `npm i`
+
+> `npm run dev`
+
+> `npm run build`
+
+### Preact (vite)
+
+- Size of development folder: 70.8 MB
+- Contains:
+  - Files: 2452
+  - Folders: 373
+- Size of built app: 18.8 KB
+- Size of minified JS files: 13.7 KB
 
 > `npm i`
 
@@ -334,7 +349,7 @@ export type Message = {
 export default App;
 ```
 
-### React
+### React / Preact
 
 ```tsx
 import { useEffect, useState } from 'react';
@@ -361,7 +376,7 @@ function App() {
 
   return (
     <div className="content">
-      <input type="text" onBlur={(event) => sendMessage(event)} />
+        <input type="text" onBlur={(event) => sendMessage(event)} onKeyDown={(event) => event.key === 'Enter' ? sendMessage(event) : {}} />
       {list.map((elem, i) => <MessageComponent key={i} message={elem} />)}
       <button onClick={() => emptyList()}>Empty</button>
     </div>
