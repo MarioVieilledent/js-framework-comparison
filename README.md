@@ -22,9 +22,9 @@ For each framework is developed a small application that handles a counter and a
 | Size of dev folder (KB) | 292 511                  | 102 757      | 481 411 | 70 761        | 103 418 | 107 088 | 96 100 | 168 932 | 3.6        |
 | Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 10.13.1       | 3.55.1  | 3.2.45  | 1.6.10 | 0.20.1  | -          |
 
-## Size of built framework in KB
+## Size of minified JS bundle in KB
 
-**Lower is better**
+*Lower is better*
 
 ![Comparison Chart](/chartBuilt.png)
 
@@ -32,7 +32,9 @@ For each framework is developed a small application that handles a counter and a
 
 ## Size of development folder in MB
 
-**Lower is better**
+*Including node modules*
+
+*Lower is better*
 
 ![Comparison Chart](/chartDev.png)
 
