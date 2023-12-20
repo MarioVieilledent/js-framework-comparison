@@ -16,11 +16,11 @@ For each framework is developed a small application that handles a counter and a
 
 ## Results
 
-|                         | React `create-react-app` | React `vite` | Angular | Preact `Vite` | Svelte  | Vue     | Solid  | Qwik    | Vanilla JS |
-| ----------------------- | ------------------------ | ------------ | ------- | ------------- | ------- | ------- | ------ | ------- | ---------- |
-| Size of built JS (KB)   | 531                      | 140          | 138     | 13.7          | 6.73    | 53.6    | 9.96   | 54.0    | 1.11       |
-| Size of dev folder (KB) | 292 511                  | 102 757      | 481 411 | 70 761        | 103 418 | 107 088 | 96 100 | 168 932 | 3.6        |
-| Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 10.13.1       | 3.55.1  | 3.2.45  | 1.6.10 | 0.20.1  | -          |
+|                         | React `create-react-app` | React `vite` | Angular | Preact `Vite` | Svelte  | Vue `vite` | Solid  | Qwik    | Vanilla JS |
+| ----------------------- | ------------------------ | ------------ | ------- | ------------- | ------- | ---------- | ------ | ------- | ---------- |
+| Size of built JS (KB)   | 531                      | 140          | 138     | 13.7          | 6.73    | 53.6       | 9.96   | 54.0    | 1.11       |
+| Size of dev folder (KB) | 292 511                  | 102 757      | 481 411 | 70 761        | 103 418 | 107 088    | 96 100 | 168 932 | 3.6        |
+| Version                 | 18.2.0                   | 18.2.0       | 14.2.3  | 10.13.1       | 3.55.1  | 3.2.45     | 1.6.10 | 0.20.1  | -          |
 
 ## Size of minified JS bundle in KB
 
